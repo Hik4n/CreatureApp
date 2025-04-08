@@ -5,11 +5,11 @@
         Width="600"
         Height="500"
         x:Class="CreatureApp.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
+        x:DataType="vm:CreatureViewModel"
         Background="#FFF0E6FF">
 
     <Design.DataContext>
-        <vm:MainWindowViewModel />
+        <vm:CreatureViewModel />
     </Design.DataContext>
 
     <Window.Styles>

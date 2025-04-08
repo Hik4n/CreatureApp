@@ -8,7 +8,7 @@ namespace CreatureApp.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = new CreatureViewModel();
         }
     }
 }

@@ -6,7 +6,7 @@ using ReactiveUI;
 
 namespace CreatureApp.ViewModels
 {
-    public class MainWindowViewModel : ReactiveObject
+    public class CreatureViewModel : ReactiveObject
     {
         public ObservableCollection<string> CreatureTypes { get; } = new()
         {
@@ -39,7 +39,7 @@ namespace CreatureApp.ViewModels
 
         private Creature? _currentCreature;
 
-        public MainWindowViewModel()
+        public CreatureViewModel()
         {
             MoveCommand = ReactiveCommand.Create(Move);
             StopCommand = ReactiveCommand.Create(Stop);
