@@ -1,0 +1,92 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:CreatureApp.ViewModels"
+        Title="Creature App"
+        Width="600"
+        Height="500"
+        x:Class="CreatureApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Background="#FFF0E6FF">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#FFC4A6FF"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#FF9D7AFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#FFB38AFF"/>
+        </Style>
+
+        <Style Selector="ScrollViewer">
+            <Setter Property="Background" Value="#FFE6D6FF"/>
+        </Style>
+
+        <Style Selector="ScrollBar">
+            <Setter Property="Background" Value="#FFD9C2FF"/>
+        </Style>
+
+        <Style Selector="ScrollBar:vertical Thumb">
+            <Setter Property="Background" Value="#FF8C5AFF"/>
+            <Setter Property="MinHeight" Value="20"/>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FFB38AFF"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+
+        <Style Selector="ComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FFB38AFF"/>
+            <Setter Property="CornerRadius" Value="3"/>
+        </Style>
+
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="#FF4B0082"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="10" Spacing="10">
+            <TextBlock Text="Select Creature:" FontSize="16" FontWeight="Bold"/>
+            <ComboBox ItemsSource="{Binding CreatureTypes}" 
+                      SelectedIndex="{Binding SelectedCreatureIndex, Mode=TwoWay}" 
+                      Width="200"/>
+
+            <StackPanel Spacing="10" Margin="0,20">
+                <Button Content="Move" Command="{Binding MoveCommand}" />
+                <Button Content="Stop" Command="{Binding StopCommand}" />
+                <Button Content="Make Sound" 
+                        Command="{Binding MakeSoundCommand}" 
+                        IsVisible="{Binding CanMakeSound}"/>
+                <Button Content="Climb Tree" 
+                        Command="{Binding ClimbTreeCommand}" 
+                        IsVisible="{Binding IsPantherSelected}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ScrollViewer Grid.Column="1" Margin="10">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Creature Info:" FontSize="16" FontWeight="Bold"/>
+                <Border Background="#FFFAF5FF" CornerRadius="5" Padding="10">
+                    <TextBlock Text="{Binding CreatureInfo}" TextWrapping="Wrap"/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
